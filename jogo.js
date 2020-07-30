@@ -105,13 +105,46 @@ const mensagemGetReady = {
   }
 }
 
-function loop() {
-  flappyBird.atualiza();
+// 
+// Telas
+//
 
-  planoDeFundo.desenha();
-  chao.desenha();
-  flappyBird.desenha();
+let telaAtiva = {};
+function mudaParaTela(novaTela) {
+  telaAtiva = novaTela;
+}
+
+const Telas = {
+  INICIO: {
+    desenha() {
+      planoDeFundo.desenha();
+      chao.desenha();
+      flappyBird.desenha();
+      mensagemGetReady.desenha();
+    },
+    atualiza() {
+
+    }
+  }
+}
+
+Telas.JOGO = {
+  desenha() {
+    planoDeFundo.desenha();
+    chao.desenha();
+    flappyBird.desenha();
+  },
+  atualiza() {
+    flappyBird.atualiza();
+  }
+}
+
+function loop() {
+  telaAtiva.desenha();
+  telaAtiva.atualiza();
   requestAnimationFrame(loop);
 }
+
+mudaParaTela(Telas.INICIO);
 
 loop();
