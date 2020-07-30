@@ -87,6 +87,24 @@ const flappyBird = {
   }
 }
 
+const mensagemGetReady = {
+  spriteX: 134,
+  spriteY: 0,
+  largura: 174,
+  altura: 152,
+  x: (canvas.width / 2) - 174 / 2,
+  y: 50,
+  desenha() {
+    contexto.drawImage(
+      sprites,
+      mensagemGetReady.spriteX, mensagemGetReady.spriteY,
+      mensagemGetReady.largura, mensagemGetReady.altura, // Tamanho do recorte na sprite
+      mensagemGetReady.x, mensagemGetReady.y,
+      mensagemGetReady.largura, mensagemGetReady.altura,
+    );
+  }
+}
+
 function loop() {
   flappyBird.atualiza();
 
