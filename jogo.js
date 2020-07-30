@@ -122,6 +122,9 @@ const Telas = {
       flappyBird.desenha();
       mensagemGetReady.desenha();
     },
+    click() {
+      mudaParaTela(Telas.JOGO);
+    },
     atualiza() {
 
     }
@@ -144,6 +147,12 @@ function loop() {
   telaAtiva.atualiza();
   requestAnimationFrame(loop);
 }
+
+window.addEventListener('click', function () {
+  if (telaAtiva.click) {
+    telaAtiva.click();
+  }
+})
 
 mudaParaTela(Telas.INICIO);
 
